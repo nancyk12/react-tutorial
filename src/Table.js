@@ -19,6 +19,9 @@ create two simple function components to make
 our table more readable 
 */
 
+
+
+
 //Table Header Component
 const TableHeader = () => {
     return (
@@ -26,42 +29,49 @@ const TableHeader = () => {
             <tr>
                 <th>Name</th>
                 <th>Job</th>
+                <th>Date</th>
             </tr>
         </thead>
     );
 }
 
 //Table Body Component
-const TableBody = () => {
-    return (
-     <tbody>
-        <tr>
-           <td>Charlie</td>
-           <td>Janitor</td>
+const TableBody = (props) => {
+
+    
+    //construct rows 
+    // use map to iterate over each row and wrap it 
+    // a html table row
+    // registered an onClick listener to remove character
+    const rows = props.data.map((row, index) => {
+     return (
+        <tr key={index}>
+          <td>{row.name}</td>
+          <td>{row.job}</td>
+          <td>{row.data}</td>
+          <td><button onClick={()=> props.removeCharacter(index)}>Delete</button></td>
         </tr>
-        <tr>
-           <td>Mac</td>
-           <td>Bouncer</td>
-        </tr>
-        <tr>
-            <td>Dee</td>
-             <td>Aspiring actress</td>
-                </tr>
-        <tr>
-            <td>Dennis</td>
-            <td>Bartender</td>
-        </tr>
-    </tbody> 
-    )
+      )
+    })
+    //return rows wrapped in tbody
+    return <tbody>{rows}</tbody>
 }
-
+// TABLE is our main Component
 class Table extends Component {
-
     render(){
+        //read props passed in from App.js
+        const { 
+            characterData, 
+            removeCharacter 
+        } = this.props;
+      
         return (
             <table>
               <TableHeader/>
-              <TableBody/>
+              <TableBody 
+              data={characterData} 
+              removeCharacter={removeCharacter} 
+              />
             </table>
           )
         }
