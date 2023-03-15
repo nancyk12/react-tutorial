@@ -81,7 +81,7 @@ removeCharacter = (index) => {
     return (
       <div className="container">
         <Welcome name='Nancy'/>
-        <Clock date={new Date().toLocaleTimeString()}/>
+        <Clock />
         <Table 
         characterData={this.state.characters} 
         removeCharacter={this.removeCharacter}
