@@ -6,6 +6,7 @@ import React, { Component } from 'react'
 */
 import Table from "./Table";
 import Form from "./Form";
+import Clock from "./Clock";
 
 //component can also be functional
 // {} evaluate javascript code
@@ -80,6 +81,7 @@ removeCharacter = (index) => {
     return (
       <div className="container">
         <Welcome name='Nancy'/>
+        <Clock date={new Date().toLocaleTimeString()}/>
         <Table 
         characterData={this.state.characters} 
         removeCharacter={this.removeCharacter}
@@ -89,6 +91,9 @@ removeCharacter = (index) => {
     )
   }
 }
+
+
+
 
 // make it accessible to the rest of your application
 export default App
