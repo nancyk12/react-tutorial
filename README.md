@@ -1,3 +1,6 @@
+1. Add a delete all button
+2. Combine Clock and Welcome Components to display "Hello, <user>. It is <time>.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

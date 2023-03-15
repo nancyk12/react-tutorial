@@ -14,7 +14,6 @@ function Welcome(props){
     return <h1>Welcome, {props.name}</h1>
 }
 
-
 class App extends Component {
     //set initial state of components
     state = {
@@ -51,16 +50,6 @@ removeCharacter = (index) => {
             }),
         })
     }
-
-    // // create method to add a character
-    // addCharacter = (name_, job) => {
-
-    //     this.character.push({name: name_, });
-    //     this.setState({
-    //         characters: this.characters
-    //     });
-    // }
-
     //we add the handle submit here, because
     // the characters in here
     //NOTE ON SYNTAX: passing a character to addCharacter
@@ -70,8 +59,14 @@ removeCharacter = (index) => {
         this.setState({characters: [...this.state.characters, character ]})
     }
 
+    //delete all the characters
+    removeAllCharacters = () => {
+        this.setState({characters:[]})
+    }
+
      /* you always have a render function 
      in a component. */
+     
   render() {
 
     //make sure return only returns one html element!
@@ -85,6 +80,7 @@ removeCharacter = (index) => {
         <Table 
         characterData={this.state.characters} 
         removeCharacter={this.removeCharacter}
+        removeAllCharacters={this.removeAllCharacters}
         />
         <Form addCharacter={this.addCharacter}/>
       </div>
