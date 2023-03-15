@@ -45,7 +45,7 @@ removeCharacter = (index) => {
         this.setState({
             //removed character at passed in index by
             //returning a new list excluding that character
-            characters: characters.filters((_, i) => {
+            characters: characters.filter((_, i) => {
                 return i !== index
             }),
         })
