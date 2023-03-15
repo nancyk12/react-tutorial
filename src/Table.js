@@ -19,9 +19,6 @@ create two simple function components to make
 our table more readable 
 */
 
-
-
-
 //Table Header Component
 const TableHeader = () => {
     return (

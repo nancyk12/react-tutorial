@@ -5,9 +5,7 @@ import React, { Component } from 'react'
    in other words: tells App to behave like a component.
 */
 import Table from "./Table";
-
-
-
+import Form from "./Form";
 
 class App extends Component {
 
@@ -46,6 +44,24 @@ removeCharacter = (index) => {
         })
     }
 
+    // // create method to add a character
+    // addCharacter = (name_, job) => {
+
+    //     this.character.push({name: name_, });
+    //     this.setState({
+    //         characters: this.characters
+    //     });
+    // }
+
+    //we add the handle submit here, because
+    // the characters in here
+    //NOTE ON SYNTAX: passing a character to addCharacter
+    // using (...) spread operator to unpack characters array and adding 
+    // a new character
+    addCharacter = character => {
+        this.setState({characters: [...this.state.characters, character ]})
+    }
+
      /* you always have a render function 
      in a component. */
   render() {
@@ -56,7 +72,11 @@ removeCharacter = (index) => {
     // so table can use it later on
     return (
       <div className="container">
-        <Table characterData={this.state.characters} removeCharacter={this.removeCharacter}/>
+        <Table 
+        characterData={this.state.characters} 
+        removeCharacter={this.removeCharacter}
+        />
+        <Form addCharacter={this.addCharacter}/>
       </div>
     )
   }
