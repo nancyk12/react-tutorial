@@ -7,8 +7,15 @@ import React, { Component } from 'react'
 import Table from "./Table";
 import Form from "./Form";
 
-class App extends Component {
+//component can also be functional
+// {} evaluate javascript code
+function Welcome(props){
+    return <h1>Welcome, {props.name}</h1>
+}
 
+
+class App extends Component {
+    //set initial state of components
     state = {
         characters: [ {
             name: 'Charlie',
@@ -72,6 +79,7 @@ removeCharacter = (index) => {
     // so table can use it later on
     return (
       <div className="container">
+        <Welcome name='Nancy'/>
         <Table 
         characterData={this.state.characters} 
         removeCharacter={this.removeCharacter}
