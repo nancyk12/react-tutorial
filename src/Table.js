@@ -19,10 +19,8 @@ create two simple function components to make
 our table more readable 
 */
 
-//DELETE ALL BUTTON Simple Component
-const DeleteAllButton = (props) => {
-    return <button onClick={() => props.removeAllCharacters()}> Delete All</button>
-  }
+
+
 
 //Table Header Component
 const TableHeader = () => {
@@ -50,7 +48,7 @@ const TableBody = (props) => {
         <tr key={index}>
           <td>{row.name}</td>
           <td>{row.job}</td>
-          <td>{row.data}</td>
+          <td>{row.date}</td>
           <td><button onClick={()=> props.removeCharacter(index)}>Delete</button></td>
         </tr>
       )
@@ -65,20 +63,16 @@ class Table extends Component {
         const { 
             characterData, 
             removeCharacter,
-            removeAllCharacters
         } = this.props;
       
         return (
-          <div id="table">
-              <DeleteAllButton removeAllCharacters={removeAllCharacters}/>  
-              <table>
+           <table>
                 <TableHeader/>
                 <TableBody 
                   data={characterData} 
                   removeCharacter={removeCharacter} 
                  />
-            </table>
-        </div>
+          </table>
           )
         }
       }

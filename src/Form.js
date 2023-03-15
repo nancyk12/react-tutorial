@@ -10,7 +10,8 @@ class Form extends Component {
         // set the initial state of the Form
         this.initialState = {
             name: '',
-            job:''
+            job:'',
+            date: new Date().toString()
         };
 
         //set our initial state to state.
@@ -20,19 +21,23 @@ class Form extends Component {
     handleChange = event => {
         //get name, value out of target (element that changed)
         const { name, value } = event.target;
+        
+        //update our state
         this.setState({
             [name]: value
-        })
+        });
     }
 
     onFormSubmit = (event) => { //(e) stands for event
        //standard code for event listeners
         event.preventDefault();
-       
-        //set the current state of our form to
+        const newDate = new Date().toString();
+        this.setState({date:newDate});
+        //set the current state or our form to the handle submit
         this.props.addCharacter(this.state);
 
         //clear inputs by setting forms to initial state
+        this.initialState.date = newDate;
         this.setState(this.initialState);
 
 
@@ -57,7 +62,8 @@ class Form extends Component {
                id="job" 
                name="job"
                value={job}
-               onChange={this.handleChange}/>
+               onChange={this.handleChange}
+               />
             <button type="submit">
                 Submit
             </button>   
